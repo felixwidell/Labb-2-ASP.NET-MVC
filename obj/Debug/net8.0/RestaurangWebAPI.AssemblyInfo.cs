@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RestaurangWebAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72f1a570fe8a94785d44ba725ce3e8241678eab3")]
 [assembly: System.Reflection.AssemblyProductAttribute("RestaurangWebAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RestaurangWebAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

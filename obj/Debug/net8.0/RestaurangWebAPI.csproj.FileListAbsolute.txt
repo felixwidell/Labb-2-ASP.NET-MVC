@@ -242,3 +242,4 @@ C:\Users\Felix Widell\source\repos\RestaurangWebAPI\obj\Debug\net8.0\refint\Rest
 C:\Users\Felix Widell\source\repos\RestaurangWebAPI\obj\Debug\net8.0\RestaurangWebAPI.pdb
 C:\Users\Felix Widell\source\repos\RestaurangWebAPI\obj\Debug\net8.0\RestaurangWebAPI.genruntimeconfig.cache
 C:\Users\Felix Widell\source\repos\RestaurangWebAPI\obj\Debug\net8.0\ref\RestaurangWebAPI.dll
+C:\Users\Felix Widell\source\repos\RestaurangWebAPI\obj\Debug\net8.0\RestaurangWebAPI.sourcelink.json

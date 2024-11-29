@@ -51,7 +51,7 @@ namespace RestaurangWebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CustomerViewModel model)
+        public async Task<IActionResult> Create(CustomerViewModelNoID model)
         {
             Console.WriteLine($"CustomerName: {model.CustomerName}, Phone: {model.Phone}");
             Console.WriteLine(ModelState.IsValid);
