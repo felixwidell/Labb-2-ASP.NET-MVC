@@ -1,0 +1,41 @@
+﻿@model IEnumerable<RestaurangWebAPI.Models.TableViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Tables List</h1>
+
+<p>
+    <a asp-controller="Table" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seats)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seats)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "Table", new { id = item.Id })" class="btn btn-secondary d-inline ">Edit</a>
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                <a href="@Url.Action("Delete", "Table", new { id = item.Id })" class="btn btn-warning d-inline ">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

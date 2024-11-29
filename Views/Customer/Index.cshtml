@@ -1,0 +1,47 @@
+﻿@model IEnumerable<RestaurangWebAPI.Models.CustomerViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Customers List</h1>
+
+<p>
+    <a asp-area="" asp-controller="Customer" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "Customer", new { id = item.Id })" class="btn btn-secondary d-inline ">Edit</a>
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                <a href="@Url.Action("Delete", "Customer", new { id = item.Id })" class="btn btn-warning d-inline ">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

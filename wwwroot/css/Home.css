@@ -1,0 +1,61 @@
+﻿
+a {
+    width: 100%;
+    height: 100%;
+}
+
+.HomeContainer {
+
+}
+
+.menuBox {
+    display: flex;
+    flex-direction: row
+    width: 100%;
+    margin: auto;
+    padding-bottom: 5vh;
+}
+
+@media screen and (max-width: 700px) {
+    .menuBox {
+        flex-direction: column;
+    }
+}
+
+.menuItem {
+    width: 25%;
+    height: 25vh;
+    margin: auto;
+    margin-bottom: 40px;
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+}
+
+@media screen and (max-width: 700px) {
+    .menuItem {
+        width: 40%;
+    }
+}
+
+.menuItem :hover {
+    transform: scale(1.1);
+}
+
+.menuItemImg {
+    width: 200px;
+    height: 150px;
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+}
+
+
+
+.img-background {
+    height: 40vh; /* Halva skärmens höjd */
+    width: 100%;
+    background-image: url('/img/pizzaBackground.jpg'); /* Ändra till din bild */
+    background-size: cover; /* Gör så att bilden täcker hela ytan */
+    background-position: center; /* Centrera bilden */
+    background-repeat: no-repeat; /* Förhindra att bilden upprepas */
+    background-color: #333; /* Alternativ färg om bilden inte laddas */
+}

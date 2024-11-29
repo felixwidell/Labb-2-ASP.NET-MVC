@@ -1,0 +1,74 @@
+﻿@inject IHttpContextAccessor HttpContextAccessor
+@model IEnumerable<RestaurangWebAPI.Models.MenuViewModel>
+
+@{
+    ViewData["Title"] = "Menu - Felix Restaurang";
+}
+
+<meta name="description" content="Upptäck vår läckra meny med färska och lokala råvaror.">
+<h1>Menu List</h1>
+ @if (HttpContextAccessor.HttpContext.Session.GetString("IsAdmin") == "true")
+{
+    <p>
+        <a asp-controller="Menu" asp-action="Create">Create New</a>
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            @if (HttpContextAccessor.HttpContext.Session.GetString("IsAdmin") == "true")
+            {
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            }
+            <th>
+                Menu
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            @if (HttpContextAccessor.HttpContext.Session.GetString("IsAdmin") == "true")
+            {
+            <th>
+                @Html.DisplayNameFor(model => model.IsAvaiable)
+            </th>
+            }
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr>
+            @if (HttpContextAccessor.HttpContext.Session.GetString("IsAdmin") == "true")
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            @if (HttpContextAccessor.HttpContext.Session.GetString("IsAdmin") == "true")
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsAvaiable)
+                </td>
+            }
+            @if (HttpContextAccessor.HttpContext.Session.GetString("IsAdmin") == "true")
+            {
+                <td>
+                    <a href="@Url.Action("Edit", "Menu", new { id = item.Id })" class="btn btn-secondary d-inline ">Edit</a>
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    <a href="@Url.Action("Delete", "Menu", new { id = item.Id })" class="btn btn-warning d-inline ">Delete</a>
+                </td>
+            }
+
+        </tr>
+}
+    </tbody>
+</table>
