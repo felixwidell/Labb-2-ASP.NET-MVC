@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using RestaurangWebAPI.Controllers;
 
 
@@ -11,7 +12,18 @@ builder.Services.AddHttpClient<MenuController>();
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 
+builder.Services.AddSession(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+{
+    options.LoginPath = "/Admin/Login";
+});
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -30,6 +42,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseSession();

@@ -243,3 +243,12 @@ C:\Users\Felix Widell\source\repos\RestaurangWebAPI\obj\Debug\net8.0\RestaurangW
 C:\Users\Felix Widell\source\repos\RestaurangWebAPI\obj\Debug\net8.0\RestaurangWebAPI.genruntimeconfig.cache
 C:\Users\Felix Widell\source\repos\RestaurangWebAPI\obj\Debug\net8.0\ref\RestaurangWebAPI.dll
 C:\Users\Felix Widell\source\repos\RestaurangWebAPI\obj\Debug\net8.0\RestaurangWebAPI.sourcelink.json
+C:\Users\Felix Widell\source\repos\RestaurangWebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Felix Widell\source\repos\RestaurangWebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Felix Widell\source\repos\RestaurangWebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Felix Widell\source\repos\RestaurangWebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Felix Widell\source\repos\RestaurangWebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Felix Widell\source\repos\RestaurangWebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Felix Widell\source\repos\RestaurangWebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Felix Widell\source\repos\RestaurangWebAPI\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Felix Widell\source\repos\RestaurangWebAPI\bin\Debug\net8.0\BCrypt.Net-Next.dll

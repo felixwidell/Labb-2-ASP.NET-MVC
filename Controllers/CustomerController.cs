@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using RestaurangWebAPI.Models;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -93,6 +94,15 @@ namespace RestaurangWebAPI.Controllers
         {
             Console.WriteLine(model.CustomerName);
 
+            var token = Request.Cookies["jwtToken"];
+            Console.WriteLine(token);
+            if (token == null)
+            {
+                return RedirectToPage("/Login");
+            }
+
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -130,6 +140,15 @@ namespace RestaurangWebAPI.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var token = Request.Cookies["jwtToken"];
+            Console.WriteLine(token);
+            if (token == null)
+            {
+                return RedirectToPage("/Login");
+            }
+
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
             var response = await _httpClient.DeleteAsync(_httpClient.BaseAddress + $"/Customer/{id}");
             if (response.IsSuccessStatusCode)
             {

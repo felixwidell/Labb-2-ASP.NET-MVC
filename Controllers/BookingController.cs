@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using NuGet.Common;
 using RestaurangWebAPI.Models;
+using System.Net.Http.Headers;
 
 namespace RestaurangWebAPI.Controllers
 {
@@ -23,6 +25,17 @@ namespace RestaurangWebAPI.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+
+            var token = Request.Cookies["jwtToken"];
+            Console.WriteLine(token);
+            if (token == null)
+            {
+                return RedirectToPage("/Login");
+            }
+
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+
             List<BookingViewModel> bookingList = new List<BookingViewModel>();
             HttpResponseMessage response = await _httpClient.GetAsync(_httpClient.BaseAddress + "/Booking/GetAllBookings");
 
@@ -36,6 +49,7 @@ namespace RestaurangWebAPI.Controllers
             else
             {
                 // Hantera fel
+                Console.WriteLine(response);
                 ModelState.AddModelError(string.Empty, "An error occurred while fetching bookings.");
                 return View(new List<BookingViewModel>());
             }
@@ -160,6 +174,15 @@ namespace RestaurangWebAPI.Controllers
             Console.WriteLine(model.Customer);
             Console.WriteLine(model.TableId);
 
+            var token = Request.Cookies["jwtToken"];
+            Console.WriteLine(token);
+            if (token == null)
+            {
+                return RedirectToPage("/Login");
+            }
+
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -183,6 +206,8 @@ namespace RestaurangWebAPI.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+
+
             var response = await _httpClient.GetAsync(_httpClient.BaseAddress + $"/Booking/{id}");
 
             if (!response.IsSuccessStatusCode)
@@ -197,6 +222,16 @@ namespace RestaurangWebAPI.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+
+            var token = Request.Cookies["jwtToken"];
+            Console.WriteLine(token);
+            if (token == null)
+            {
+                return RedirectToPage("/Login");
+            }
+
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
             var response = await _httpClient.DeleteAsync(_httpClient.BaseAddress + $"/Booking/{id}");
             if (response.IsSuccessStatusCode)
             {

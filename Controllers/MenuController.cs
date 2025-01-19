@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RestaurangWebAPI.Models;
+using System.Net.Http.Headers;
 
 namespace RestaurangWebAPI.Controllers
 {
@@ -18,6 +19,9 @@ namespace RestaurangWebAPI.Controllers
         [HttpGet]
         public async  Task<IActionResult> Index()
         {
+            var token = Request.Cookies["jwtToken"];
+            Console.WriteLine(token);
+
             List<MenuViewModel> menuList = new List<MenuViewModel>();
             HttpResponseMessage response = await _httpClient.GetAsync(_httpClient.BaseAddress + "/Menu/GetMenu");
 
@@ -44,6 +48,15 @@ namespace RestaurangWebAPI.Controllers
         public async Task<IActionResult> Create(MenuViewModel model)
         {
             Console.WriteLine(model.FoodName + model.Price + model.IsAvaiable);
+
+            var token = Request.Cookies["jwtToken"];
+            Console.WriteLine(token);
+            if (token == null)
+            {
+                return RedirectToPage("/Login");
+            }
+
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
             if (ModelState.IsValid)
             {
@@ -87,6 +100,15 @@ namespace RestaurangWebAPI.Controllers
                 return View(model);
             }
 
+            var token = Request.Cookies["jwtToken"];
+            Console.WriteLine(token);
+            if (token == null)
+            {
+                return RedirectToPage("/Login");
+            }
+
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
             var response = await _httpClient.PatchAsJsonAsync(_httpClient.BaseAddress + "/Menu/UpdateMenu", model);
             if (response.IsSuccessStatusCode)
             {
@@ -114,6 +136,15 @@ namespace RestaurangWebAPI.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var token = Request.Cookies["jwtToken"];
+            Console.WriteLine(token);
+            if (token == null)
+            {
+                return RedirectToPage("/Login");
+            }
+
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
             var response = await _httpClient.DeleteAsync(_httpClient.BaseAddress + $"/Menu/{id}");
             if (response.IsSuccessStatusCode)
             {
